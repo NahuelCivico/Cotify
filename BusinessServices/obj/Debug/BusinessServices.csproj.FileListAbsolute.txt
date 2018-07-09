@@ -1,0 +1,12 @@
+C:\Users\nahue\Documents\Visual Studio 2017\Cotify\Cotify\BusinessServices\obj\Debug\BusinessServices.csproj.CoreCompileInputs.cache
+C:\Users\nahue\Documents\Visual Studio 2017\Cotify\Cotify\BusinessServices\bin\Debug\BusinessServices.dll
+C:\Users\nahue\Documents\Visual Studio 2017\Cotify\Cotify\BusinessServices\bin\Debug\BusinessServices.pdb
+C:\Users\nahue\Documents\Visual Studio 2017\Cotify\Cotify\BusinessServices\bin\Debug\Model.dll
+C:\Users\nahue\Documents\Visual Studio 2017\Cotify\Cotify\BusinessServices\bin\Debug\EntityFramework.dll
+C:\Users\nahue\Documents\Visual Studio 2017\Cotify\Cotify\BusinessServices\bin\Debug\Model.pdb
+C:\Users\nahue\Documents\Visual Studio 2017\Cotify\Cotify\BusinessServices\bin\Debug\Model.dll.config
+C:\Users\nahue\Documents\Visual Studio 2017\Cotify\Cotify\BusinessServices\bin\Debug\EntityFramework.xml
+C:\Users\nahue\Documents\Visual Studio 2017\Cotify\Cotify\BusinessServices\obj\Debug\BusinessServices.csprojAssemblyReference.cache
+C:\Users\nahue\Documents\Visual Studio 2017\Cotify\Cotify\BusinessServices\obj\Debug\BusinessServices.csproj.CopyComplete
+C:\Users\nahue\Documents\Visual Studio 2017\Cotify\Cotify\BusinessServices\obj\Debug\BusinessServices.dll
+C:\Users\nahue\Documents\Visual Studio 2017\Cotify\Cotify\BusinessServices\obj\Debug\BusinessServices.pdb

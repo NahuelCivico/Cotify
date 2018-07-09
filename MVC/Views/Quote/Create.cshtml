@@ -1,0 +1,165 @@
+﻿@model MVC.Models.QuoteVM
+
+@{
+    ViewBag.Title = "Create";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div id="div-Config" class="row">
+            <div class="col-md-10 col-md-offset-2">
+                <div class="border-content">
+
+                    <h4><strong class="great-label">Configurar</strong> cotización</h4>
+
+                    <div class="content">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Cliente, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Cliente, new { htmlAttributes = new { @class = "form-control onyl-text", @required = "required" } })
+                                @Html.ValidationMessageFor(model => model.Cliente, "", new { @class = "text-danger" })
+                                <span id="clienteError" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.TipoSeguro, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.TipoSeguro, new { htmlAttributes = new { @class = "form-control onyl-text" } })
+                                @Html.ValidationMessageFor(model => model.TipoSeguro, "", new { @class = "text-danger" })
+                                <span id="tipoSeguroError" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.FechaVencimiento, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.FechaVencimiento, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                @Html.ValidationMessageFor(model => model.FechaVencimiento, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="button" value="Siguiente" id="next" class="btn btn-default" />
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        @{
+            List<SelectListItem> listItems = new List<SelectListItem>();
+
+            listItems.Add(new SelectListItem()
+            {
+                Text = "Efectivo",
+                Value = "Efectivo",
+                Selected = true
+            });
+
+            listItems.Add(new SelectListItem()
+            {
+                Text = "Tarjeta",
+                Value = "Tarjeta"
+            });
+
+            listItems.Add(new SelectListItem()
+            {
+                Text = "Debito",
+                Value = "Debito"
+            });
+
+        }
+
+        <div id="div-Confirm" class="row" hidden>
+            <div class="col-sm-10 col-sm-offset-2">
+                <div class="border-content">
+                    <h4><strong class="great-label">Confirmar</strong> cotización</h4>
+
+                    <div class="content">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.FormaPago, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownListFor(model => model.FormaPago, listItems, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.FormaPago, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.NumeroPoliza, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.NumeroPoliza, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.NumeroPoliza, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Activa, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                <div class="checkbox">
+                                    @Html.CheckBoxFor(model => model.Activa, new { @style = "height:20px;width:20px;margin-left:0px;margin-top:0px;" })
+                                    @Html.ValidationMessageFor(model => model.Activa, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Cotizar" id="submit" class="btn btn-default" />
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+}
+
+<div class="content">
+    <button id="back" class="btn btn-default" data-url="/Quote/Index">
+        Volver
+    </button>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        $(document).ready(function () {
+
+            $('#Activa').prop('checked', true);
+
+            $('#next').on('click', function () {
+                $('#div-Config').hide();
+                $('#div-Confirm').show();
+            });
+
+            $('#back').on('click', function () {
+                window.location.href = $('#back').attr('data-url');
+            });
+
+        });
+
+        $(function () {
+            $('.onyl-text').keydown(function (e) {
+                var key = e.keyCode;
+                if (!((key == 8) || (key == 9) || (key == 32) || (key == 46) || (key >= 35 && key <= 40) || (key >= 65 && key <= 90))) {
+                    e.preventDefault();
+                }
+            });
+        });
+    </script>
+
+}

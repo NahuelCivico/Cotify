@@ -1,0 +1,58 @@
+﻿
+<h4 class="content"><strong class="great-label">Cotizaciones</strong></h4>
+
+<div class="content ">
+    <div class="row">
+        <div class="col-md-6">
+            <input id="search" class="form-control" placeholder="Buscar" />
+        </div>
+        <div class="col-md-6">
+            <button id="create" class="btn btn-default" data-url="/Quote/Create">
+                Nueva cotización
+            </button>
+        </div>
+    </div>
+</div>
+
+<div id="table-content">
+    @Html.Partial("~/Views/Quote/List.cshtml")
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+
+            $('#search').on('mouseleave', function () {
+                ajaxBySearch();
+            });
+
+            $('#search').on('keypress', function (e) {
+                if (e.which == 13) {
+                    ajaxBySearch();
+                }
+            });
+
+            $('#create').on('click', function () {
+                window.location.href = $('#create').attr('data-url');
+            });
+
+        });
+
+        function ajaxBySearch() {
+            $.ajax({
+                type: 'GET',
+                url: '/Quote/Search',
+                data: { filter: $('#search').val() },
+                contentType: 'application/json',
+                success: function (data) {
+                    $('#table-content').empty();
+                    $('#table-content').append(data);
+                },
+                error: function (error) {
+                }
+            });
+        }
+    </script>
+}
+
+
